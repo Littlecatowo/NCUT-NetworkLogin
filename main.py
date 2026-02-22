@@ -14,7 +14,7 @@ class LoginClass():
                 self.account = data.get("account", "")
                 self.password = data.get("password", "")
         except:
-            print("無法讀取 userdata.json，請確保檔案存在且格式正確")
+            print(">> 無法讀取 userdata.json，請確保檔案存在且格式正確 <<")
 
     async def getLoginScript(self):
         async with aiohttp.ClientSession() as session:
@@ -24,7 +24,7 @@ class LoginClass():
                     print(f"已抓到登入頁面連結")
                     return soup
                 else:
-                    print(f"未抓到登入頁面連結")
+                    print(f">> 未抓到登入頁面連結 <<")
                     return None
                 
     async def getLoginUrl(self, soup: BeautifulSoup):
@@ -43,20 +43,20 @@ class LoginClass():
                     return None
 
     async def getLoginForm(self, soup: BeautifulSoup):
-        magic_value = soup.find('input', {'name': 'magic'})['value']
-        redir_value = soup.find('input', {'name': '4Tredir'})['value']
+        magic_value = soup.find('input', {'name': 'magic'})
+        redir_value = soup.find('input', {'name': '4Tredir'})
 
-        if not magic_value or not redir_value:
-            print("無法找到 magic 或 4Tredir 的值，請檢查登入頁面結構是否有變化")
+        if magic_value is None or redir_value is None:
+            print(">> 無法找到 magic 或 4Tredir 的值 <<")
             return False
         
         if self.account == "" or self.password == "":
-            print("請在 userdata.json 中填寫帳號和密碼")
+            print(">> 請在 userdata.json 中填寫帳號和密碼 <<")
             return False
 
         payload = {
-            '4Tredir': redir_value,
-            'magic': magic_value,
+            '4Tredir': redir_value['value'],
+            'magic': magic_value['value'],
             'username': self.account,
             'password': self.password
         }
@@ -67,9 +67,9 @@ class LoginClass():
         async with aiohttp.ClientSession() as session:
             async with session.post(url=url, data=payload) as resp:
                 if resp.ok:
-                    print("登入成功")
+                    print(f"登入成功 - {dt.now(Taipei).strftime('西元%Y | %m月 | %d日 -> %H:%M:%S')}")
                 else:
-                    print("登入失敗")
+                    print(f"登入失敗 - 請確認帳號密碼有無輸入正確 - {dt.now(Taipei).strftime('西元%Y | %m月 | %d日 -> %H:%M:%S')}")
 
 async def main():
     login = LoginClass()
