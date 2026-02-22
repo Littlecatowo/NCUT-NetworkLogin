@@ -10,8 +10,8 @@
 ## <div>準備過程
 - ### 到 Release 頁面
 > 下載最新釋出的 ZIP 檔案，然後解壓縮到你喜歡的地方
-<img src="./assets/Release-1.png">
-<img src="./assets/Release-2.png">
+<img src="./assets/Release-1.png"></img>
+<img src="./assets/Release-2.png"></img>
 
 - ###  userdata.json
 > 先用記事本打開 userdata.json，輸入你的帳號跟密碼
@@ -21,7 +21,7 @@
     "password": "輸入你的密碼" // 密碼預設為 身分證字號 
 }
 ```
-<img src="./assets/userdata-1.png">
-<img src="./assets/userdata-2.png">
+<img src="./assets/userdata-1.png"></img>
+<img src="./assets/userdata-2.png"></img>
 
 ## <div>打開 main.exe，你的網路就可以持續連線了:D
