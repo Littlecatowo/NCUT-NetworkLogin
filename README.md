@@ -5,7 +5,7 @@
 >  請確認你的主機有以下任一選擇達成<br>
 > 1. 有插上RJ-45網路線
 > 2. 或者插無線網卡USB(或者主機板有內建網路晶片)
->> 連上 TANetRoaming 這個 WIFI<br>
+    >> 連上 TANetRoaming 這個 WIFI<br>
 
 ## <div>準備過程
 - ### 到 Release 頁面
