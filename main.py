@@ -24,7 +24,6 @@ class LoginClass():
                     print(f"已抓到登入頁面連結")
                     return soup
                 else:
-                    print(f">> 未抓到登入頁面連結 <<")
                     return None
                 
     async def getLoginUrl(self, soup: BeautifulSoup):
@@ -67,9 +66,9 @@ class LoginClass():
         async with aiohttp.ClientSession() as session:
             async with session.post(url=url, data=payload) as resp:
                 if resp.ok:
-                    print(f"登入成功 - {dt.now(Taipei).strftime('西元%Y | %m月 | %d日 -> %H:%M:%S')}")
+                    print(f"✅登入成功 - {dt.now(Taipei).strftime('西元%Y | %m月 | %d日 -> %H:%M:%S')}")
                 else:
-                    print(f"登入失敗 - 請確認帳號密碼有無輸入正確 - {dt.now(Taipei).strftime('西元%Y | %m月 | %d日 -> %H:%M:%S')}")
+                    print(f"❌登入失敗 - 請確認帳號密碼有無輸入正確 - {dt.now(Taipei).strftime('西元%Y | %m月 | %d日 -> %H:%M:%S')}")
 
 async def main():
     login = LoginClass()
